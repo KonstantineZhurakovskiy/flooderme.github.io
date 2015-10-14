@@ -182,11 +182,11 @@
 									}else if($trueemail.test($realemail)) {	
 										$f = $("form");
 										$.ajax({
-									        type: $f.attr('method'),
+									        type: 'POST',
 									        url: $f.attr('action'),
 									        data: $f.serialize(),
 									        cache       : false,
-									        dataType    : 'json',
+									        dataType    : 'jsonp',
 									        contentType: "application/json; charset=utf-8",
 									        error       : function(err) { $message._show('failure', 'Something went wrong with server. Please try again.'); },
 									        success     : function(data) {
