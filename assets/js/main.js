@@ -102,6 +102,7 @@
 
 			// Vars.
 				var $form = document.querySelectorAll('#signup-form')[0],
+					$f = document.getElementById('signup-form'),
 					$submit = document.querySelectorAll('#signup-form input[type="submit"]')[0],
 					$emailform = document.getElementById("email"),
 					$trueemail = /^[A-Za-z0-9._]*\@[A-Za-z]*\.[A-Za-z]{2,5}$/,
@@ -179,10 +180,11 @@
 									}else if(!$trueemail.test($realemail)) {										
 										$message._show('failure', 'Something went wrong. Please try again.');
 									}else if($trueemail.test($realemail)) {	
+										$f = $("f");
 										$.ajax({
-									        type: $form.attr('method'),
-									        url: $form.attr('action'),
-									        data: $form.serialize(),
+									        type: $f.attr('method'),
+									        url: $f.attr('action'),
+									        data: $f.serialize(),
 									        cache       : false,
 									        dataType    : 'json',
 									        contentType: "application/json; charset=utf-8",
@@ -195,7 +197,6 @@
 									            }
 									        }
 								    	});
-								    	console.log(data);
 										//$message._show('success', 'Thank you!');
 									}
 						//}, 750);						
