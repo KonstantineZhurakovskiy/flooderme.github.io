@@ -197,6 +197,7 @@
 									            }
 									        }
 								    	});
+								    	console.log(data);
 										//$message._show('success', 'Thank you!');
 									}
 						//}, 750);						
