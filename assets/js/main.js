@@ -188,7 +188,7 @@
 									        cache       : false,
 									        dataType    : 'json',
 									        contentType: "application/json; charset=utf-8",
-									        error       : function(err) { $message._show('failure', 'Something went wrong with server. Please try again.'); },
+									        error       : function(err) { console.log(data); $message._show('failure', 'Something went wrong with server. Please try again.'); },
 									        success     : function(data) {
 									            if (data.result != "success") {									            	
 									                $message._show('failure', 'Something went wrong. Please try again.');
@@ -197,7 +197,7 @@
 									            }
 									        }
 								    	});
-								    	console.log(data);
+
 										//$message._show('success', 'Thank you!');
 									}
 						//}, 750);						
