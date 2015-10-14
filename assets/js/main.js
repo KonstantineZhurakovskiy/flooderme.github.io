@@ -182,8 +182,8 @@
 									}else if($trueemail.test($realemail)) {	
 										$f = $("form");
 										$.ajax({
-									        type: 'POST',
-									        url: $f.attr('action'),
+									        type: $f.attr('method'),
+									        url: $f.attr('action') + '&email=' + $realemail,
 									        data: $f.serialize(),
 									        cache       : false,
 									        dataType    : 'jsonp',
