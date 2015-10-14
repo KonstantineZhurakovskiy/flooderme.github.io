@@ -183,10 +183,10 @@
 										$f = $("form");
 										$.ajax({
 									        type: $f.attr('method'),
-									        url: $f.attr('action') + '&email=' + $realemail,
-									        data: $f.serialize(),
+									        url: $f.attr('action') + '&EMAIL=' + $realemail,
 									        cache       : false,
-									        dataType    : 'jsonp',
+													dataType: "jsonp",
+													jsonp: "c",
 									        contentType: "application/json; charset=utf-8",
 									        error       : function(err) { $message._show('failure', 'Something went wrong with server. Please try again.'); },
 									        success     : function(data) {
