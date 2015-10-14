@@ -180,7 +180,7 @@
 									}else if(!$trueemail.test($realemail)) {										
 										$message._show('failure', 'Something went wrong. Please try again.');
 									}else if($trueemail.test($realemail)) {	
-										$f = $("f");
+										$f = $("form");
 										$.ajax({
 									        type: $f.attr('method'),
 									        url: $f.attr('action'),
