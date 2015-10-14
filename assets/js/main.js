@@ -19,8 +19,8 @@
 		// window.addEventListener
 			(function(){if("addEventListener"in window)return;window.addEventListener=function(type,f){window.attachEvent("on"+type,f)}})();
 
-	// Vars.
-		var	$body = document.querySelector('body');
+		// Vars.
+			var	$body = document.querySelector('body');
 
 	
 
@@ -40,8 +40,7 @@
 						},
 
 					// Delay.
-						delay: 6000
-
+						delay: 6000	
 				};
 
 			// Vars.
@@ -64,7 +63,6 @@
 
 					// Add it to array.
 						$bgs.push($bg);
-
 				}
 
 			// Main loop.
@@ -99,12 +97,16 @@
 
 		})();
 
-	/*// Signup Form.
+	// Signup Form.
 		(function() {
 
 			// Vars.
 				var $form = document.querySelectorAll('#signup-form')[0],
 					$submit = document.querySelectorAll('#signup-form input[type="submit"]')[0],
+					$emailform = document.getElementById("email"),
+					$trueemail = /^[A-Za-z0-9._]*\@[A-Za-z]*\.[A-Za-z]{2,5}$/,
+					$realemail,
+					$main,
 					$message;
 
 			// Bail if addEventListener isn't supported.
@@ -112,9 +114,10 @@
 					return;
 
 			// Message.
+				$main = document.getElementById('main');
 				$message = document.createElement('span');
 					$message.classList.add('message');
-					$form.appendChild($message);
+					$main.insertBefore($message, main.childNodes[7]);
 
 				$message._show = function(type, text) {
 
@@ -124,13 +127,21 @@
 
 					window.setTimeout(function() {
 						$message._hide();
-					}, 3000);
+					}, 2000);
+					window.setTimeout(function() {
+						$message._hidetype();
+					}, 2150);
 
 				};
 
-				$message._hide = function() {
-					$message.classList.remove('visible');
+				$message._hide = function() {				
+					$message.classList.remove('visible');			
 				};
+
+				$message._hidetype = function() {	
+					$message.classList.remove('failure');
+					$message.classList.remove('success');	
+				}
 
 			// Events.
 			// Note: If you're *not* using AJAX, get rid of this event listener.
@@ -145,6 +156,9 @@
 					// Disable submit.
 						$submit.disabled = true;
 
+					// Take email value.						
+						$realemail = document.getElementById("email").value;
+					
 					// Process form.
 					// Note: Doesn't actually do anything yet (other than report back with a "thank you"),
 					// but there's enough here to piece together a working AJAX submission call that does.
@@ -153,17 +167,23 @@
 							// Reset form.
 								$form.reset();
 
+							// Focus form.
+								$emailform.focus();
+
 							// Enable submit.
 								$submit.disabled = false;
 
-							// Show message.
-								$message._show('success', 'Thank you!');
-								//$message._show('failure', 'Something went wrong. Please try again.');
-
-						}, 750);
-
+						  	// Validate email and show message.				
+								if ($realemail == "") {
+									$message._show('failure', 'Something went wrong. Please try again.');									  
+									}else if(!$trueemail.test($realemail)) {										
+										$message._show('failure', 'Something went wrong. Please try again.');
+									}else if($trueemail.test($realemail)) {	
+										$message._show('success', 'Thank you!');
+									}
+						}, 750);						
 				});
 
-		})();*/
+		})();
 
 })();
