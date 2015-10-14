@@ -162,7 +162,7 @@
 					// Process form.
 					// Note: Doesn't actually do anything yet (other than report back with a "thank you"),
 					// but there's enough here to piece together a working AJAX submission call that does.
-						window.setTimeout(function() {
+						//window.setTimeout(function() {
 
 							// Reset form.
 								$form.reset();
@@ -179,9 +179,26 @@
 									}else if(!$trueemail.test($realemail)) {										
 										$message._show('failure', 'Something went wrong. Please try again.');
 									}else if($trueemail.test($realemail)) {	
-										$message._show('success', 'Thank you!');
+										$.ajax({
+									        type: $form.attr('method'),
+									        url: $form.attr('action'),
+									        data: $form.serialize(),
+									        cache       : false,
+									        dataType    : 'json',
+									        contentType: "application/json; charset=utf-8",
+									        error       : function(err) { $message._show('failure', 'Something went wrong with server. Please try again.'); },
+									        success     : function(data) {
+									            if (data.result != "success") {									            	
+									                $message._show('failure', 'Something went wrong. Please try again.');
+									            } else {
+									                // $message._show('success', 'Thank you!');
+									            }
+									        }
+								    	});
+								    	console.log(data);
+										//$message._show('success', 'Thank you!');
 									}
-						}, 750);						
+						//}, 750);						
 				});
 
 		})();
