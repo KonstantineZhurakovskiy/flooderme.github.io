@@ -180,13 +180,13 @@
 									}else if(!$trueemail.test($realemail)) {										
 										$message._show('failure', 'Something went wrong. Please try again.');
 									}else if($trueemail.test($realemail)) {	
-										$f = $("f");
+										$f = $("form");
 										$.ajax({
 									        type: $f.attr('method'),
-									        url: $f.attr('action'),
-									        data: $f.serialize(),
+									        url: $f.attr('action') + '&EMAIL=' + $realemail,
 									        cache       : false,
-									        dataType    : 'json',
+													dataType: "jsonp",
+													jsonp: "c",
 									        contentType: "application/json; charset=utf-8",
 									        error       : function(err) { $message._show('failure', 'Something went wrong with server. Please try again.'); },
 									        success     : function(data) {
