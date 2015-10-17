@@ -804,6 +804,8 @@
 	}
 
 			#main .avatar img {
+				width: 195px;
+				height: 195px;
 				opacity: 0.8;
 			}
 
